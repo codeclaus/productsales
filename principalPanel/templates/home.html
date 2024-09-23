@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-4">Bienvenido a Mi Página Web</h1>
+        <p class="lead">
+          Esta es una página web básica creada con Bootstrap 5.
+        </p>
+      </div>
+    </div>
+    <div style="text-align: right; margin-right:30px; color:white;">
+      {% if user.is_authenticated %}
+      <div style="color:red">
+      WELCOME: {{ user.username}}&nbsp; &nbsp;<a href="{% url "close" %}" class="">CERRAR SESION</a>
+      </div>
+      {% else %}
+      <a href="{% url 'logear' %}">INICIAR SESION &nbsp;</a><a href="{% url 'register'%}" class="sesion">&nbsp;  REGISTRARSE</a>
+      {% endif %}
+    </div>
+    <div class="container">
+      <section id="inicio" class="mb-5">
+        <h2>Inicio</h2>
+        <p>
+          Bienvenido a mi página web. Aquí encontrarás información sobre mí y
+          mis servicios.
+        </p>
+      </section>
+
+      <section id="sobre-mi" class="mb-5">
+        <h2>Sobre Mí</h2>
+        <p>
+          Esta sección contiene información sobre mí o mi proyecto. Puedes
+          modificar este contenido según tus necesidades.
+        </p>
+      </section>
+
+      <section id="servicios" class="mb-5">
+        <h2><a href="{% url "products" %}">Servicios</a></h2>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a href="#">Servicio 1 - mesas y sillas</a>
+                </h5>
+                <p class="card-text">Descripción del servicio 1.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Servicio 2</h5>
+                <p class="card-text">Descripción del servicio 2.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Servicio 3</h5>
+                <p class="card-text">Descripción del servicio 3.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="mb-5">
+        <h2>Contacto</h2>
+        <form>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              placeholder="Tu nombre"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="tu@email.com"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+      </section>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+  </body>
+</html>
+{% endblock content %}
